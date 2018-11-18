@@ -20,5 +20,7 @@ Special thanks to external contributors on this release:
 
 ### IMPROVEMENTS:
 
+Retry RemoteSigner connections on Error
+
 ### BUG FIXES:
 
