@@ -85,13 +85,13 @@ func (sc *IPCVal) OnStart() error {
 					sc.Logger.Error("Ping", "err", err)
 				}
 				sc.OnStop()
-				err := sc.OnStart()
+				err = sc.OnStart()
 
-					if err != nil {
-						sc.Logger.Error(
-							"Restarting IPCVal failed",
-							"err", err,
-						)
+				if err != nil {
+					sc.Logger.Error(
+						"Restarting IPCVal failed",
+						"err", err,
+					)
 				}
 			case <-sc.cancelPing:
 				sc.pingTicker.Stop()
