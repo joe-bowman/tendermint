@@ -119,10 +119,24 @@ func (sc *TCPVal) OnStart() error {
 			case <-sc.pingTicker.C:
 				err := sc.Ping()
 				if err != nil {
+					if err == ErrUnexpectedResponse {
+						sc.OnStop()
+						return
+					}
 					sc.Logger.Error(
 						"Ping",
 						"err", err,
 					)
+					sc.OnStop()
+					err := sc.OnStart()
+
+					if err != nil {
+						sc.Logger.Error(
+							"Restarting TCPVal failed",
+							"err", err,
+						)
+					}
+
 				}
 			case <-sc.cancelPing:
 				sc.pingTicker.Stop()

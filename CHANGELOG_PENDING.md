@@ -37,6 +37,8 @@ program](https://hackerone.com/tendermint).
 
 ### IMPROVEMENTS:
 
+- [privval] retry RemoteSigner connections on Error
+
 ### BUG FIXES:
 - [types] \#2938 Fix regression in v0.26.4 where we panic on empty
   genDoc.Validators
