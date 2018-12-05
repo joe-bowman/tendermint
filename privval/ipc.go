@@ -77,8 +77,21 @@ func (sc *IPCVal) OnStart() error {
 			select {
 			case <-sc.pingTicker.C:
 				err := sc.Ping()
+				if err == ErrUnexpectedResponse {
+						sc.OnStop()
+						return
+				}
 				if err != nil {
 					sc.Logger.Error("Ping", "err", err)
+				}
+				sc.OnStop()
+				err := sc.OnStart()
+
+					if err != nil {
+						sc.Logger.Error(
+							"Restarting IPCVal failed",
+							"err", err,
+						)
 				}
 			case <-sc.cancelPing:
 				sc.pingTicker.Stop()
