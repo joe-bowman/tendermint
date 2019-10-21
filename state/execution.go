@@ -303,11 +303,11 @@ func getBeginBlockValidatorInfo(block *types.Block, lastValSet *types.ValidatorS
 	if block.Height > 1 {
 		precommitLen := len(block.LastCommit.Precommits)
 		valSetLen := len(lastValSet.Validators)
-		if precommitLen != valSetLen {
+		/*if precommitLen != valSetLen {
 			// sanity check
 			panic(fmt.Sprintf("precommit length (%d) doesn't match valset length (%d) at height %d\n\n%v\n\n%v",
 				precommitLen, valSetLen, block.Height, block.LastCommit.Precommits, lastValSet.Validators))
-		}
+		}*/
 	}
 
 	// Collect the vote info (list of validators and whether or not they signed).
