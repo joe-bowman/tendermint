@@ -1044,14 +1044,14 @@ func (cs *State) enterPropose(height int64, round int32) {
 			"proposer",
 			address,
 			"privValidator",
-			cs.privValidator)
+			cs.privValidator.String())
 		cs.decideProposal(height, round)
 	} else {
 		logger.Info("enterPropose: Not our turn to propose",
 			"proposer",
 			cs.Validators.GetProposer().Address,
 			"privValidator",
-			cs.privValidator)
+			cs.privValidator.String())
 	}
 }
 
