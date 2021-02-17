@@ -32,6 +32,11 @@ func NewSignerClient(endpoint *SignerListenerEndpoint, chainID string) (*SignerC
 	return &SignerClient{endpoint: endpoint, chainID: chainID}, nil
 }
 
+func (sc *SignerClient) String() string {
+	return fmt.Sprintf("%s (%s)", /*sc.endpoint*/ "fix me", sc.chainID)
+}
+
+
 // Close closes the underlying connection
 func (sc *SignerClient) Close() error {
 	return sc.endpoint.Close()

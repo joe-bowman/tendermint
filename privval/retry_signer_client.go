@@ -25,6 +25,12 @@ func NewRetrySignerClient(sc *SignerClient, retries int, timeout time.Duration) 
 
 var _ types.PrivValidator = (*RetrySignerClient)(nil)
 
+func (sc *RetrySignerClient) String() string {
+	return sc.next.String()
+}
+
+
+
 func (sc *RetrySignerClient) Close() error {
 	return sc.next.Close()
 }
